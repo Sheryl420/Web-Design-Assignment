@@ -112,6 +112,10 @@ function closePopup(){
     
     popup.classList.remove("active");
     overlay.classList.remove("active");
+    document.getElementById("closePage").addEventListener()"click", function(){
+
+        window.location.href = "contactus.html";
+    
     
 }
 </script>
