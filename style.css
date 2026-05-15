@@ -55,6 +55,47 @@ body {
     .nav-links a:hover {
         color: white;
     }
+
+    .quote-banner {
+        margin: 24px 40px 0;
+        background-color: #EEE8DC;
+        border: 3px solid #FFBF00;
+        border-radius: 18px;
+        overflow: hidden;
+        white-space: nowrap;
+        box-shadow: 0 5px 14px rgba(0, 0, 0, 0.18);
+    }
+
+    .quote-track {
+        display: inline-flex;
+        align-items: center;
+        gap: 45px;
+        min-width: max-content;
+        padding: 13px 0;
+        animation: quoteWheel 22s linear infinite;
+    }
+
+    .quote-track span {
+        color: #043A2A;
+        font-size: 17px;
+        font-weight: bold;
+    }
+
+    .quote-track span::before {
+        content: "•";
+        color: #E6A800;
+        margin-right: 45px;
+    }
+
+    @keyframes quoteWheel {
+        from {
+            transform: translateX(0);
+        }
+
+        to {
+            transform: translateX(-50%);
+        }
+    }
     
     
     /* Hero container */
@@ -68,7 +109,8 @@ body {
         min-height: 500px;
         background-image: url("hp.jpg");
         background-position: center;
-        background-size: 100% 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
     }
     
     /* Text on top */
@@ -362,17 +404,18 @@ body {
             border-radius: 35px;
         }
         .notification-wrapper{
-            width:95%;
+            width:100%;
             min-height:100vh;
             padding:40px 30px 60px;
             display:flex;
             justify-content:center;
             align-items:flex-start;
             position:relative;
+            box-sizing:border-box;
         }
         
         .notification-box{
-            width:95%;
+            width:min(95%, 1350px);
             max-width:1350px;
             min-height:760px;
             background:#01251a;
@@ -469,7 +512,7 @@ body {
         .page-title{
             text-align:center;
             color:#FFC400;
-            font: size 3em;
+            font-size:3em;
             margin-bottom:40px;
             letter-spacing:2px;
             text-shadow:3px 3px 0px #00000026;
@@ -594,7 +637,7 @@ body {
             left:-20px;
         }
         
-        .next-btn{
+        .carousel-container .next-btn{
             right:-20px;
         }
         
@@ -666,10 +709,10 @@ body {
                 opacity:0.4;
             }
         }
-        /*Contuct us - CSS*/
-        margin:0;
-        padding:0;
-        box-sizing:border-box;
+        /* Contact us - CSS */
+        * {
+            box-sizing:border-box;
+        }
         
         
         /*Contact Us Start hear*/
@@ -971,7 +1014,7 @@ body {
             }
             
             .form-row{
-                flex-direction: auto;
+                flex-direction:column;
             }
             
             .contact-left h1{

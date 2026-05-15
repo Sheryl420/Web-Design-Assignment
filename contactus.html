@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    
-    
+</head>
+<body>
     <header class="navbar">
         <div class="nav-left">
             <img src="Settings icon.png" alt="Settings" class="icon">
@@ -25,8 +25,6 @@
             <a href="contactus.html">Contact Us</a>
         </nav>
     </header>
-</head>
-<body>
     <section class="contact-section">
         
         <div class="contact-container">
@@ -87,30 +85,30 @@
                     <div class="form-row">
                         
                         <div class="input-group">
-                            <label>Name & Surname</label>
-                            <input type="text" required>
+                            <label for="contactName">Name & Surname</label>
+                            <input id="contactName" type="text" required>
                         </div>
                         
                         <div class="input-group">
-                            <label>Mobile Number</label>
-                            <input type="text" required>
+                            <label for="contactPhone">Mobile Number</label>
+                            <input id="contactPhone" type="text" required>
                         </div>
                         
                     </div>
                     
                     <div class="input-group" style="margin-bottom:25px;">
-                        <label>Email Address</label>
-                        <input type="email" required>
+                        <label for="contactEmail">Email Address</label>
+                        <input id="contactEmail" type="email" required>
                     </div>
                     
                     <div class="input-group" style="margin-bottom:25px;">
-                        <label>Subject</label>
-                        <input type="text" required>
+                        <label for="contactSubject">Subject</label>
+                        <input id="contactSubject" type="text" required>
                     </div>
                     
                     <div class="input-group">
-                        <label>Message</label>
-                        <textarea required></textarea>
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" required></textarea>
                     </div>
                     
                     <button class="send-btn" type="submit">
@@ -145,7 +143,6 @@
         </button>
         
     </div>
-</body>
 <footer class="footer">
     
     <div class="footer-left">
@@ -164,7 +161,7 @@
         
         <p>
             <i class="fa-solid fa-envelope"></i>
-            <a href="mailto:sherylamanda13@@gmail.com">
+            <a href="mailto:sherylamanda13@gmail.com">
                 findmypaw@gmail.com
             </a>
         </p>
@@ -179,5 +176,7 @@
         <img src="logo findmypaw.png" alt="FindMyPaw Logo">
     </div>
     
+    <script src="script.js"></script>
 </footer>
+</body>
 </html>
