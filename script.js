@@ -1,4 +1,68 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const settingsIcon = document.querySelector(".icon");
+    const navLeft = document.querySelector(".nav-left");
+
+    if (settingsIcon && navLeft) {
+        settingsIcon.setAttribute("role", "button");
+        settingsIcon.setAttribute("tabindex", "0");
+        settingsIcon.setAttribute("aria-label", "Open settings menu");
+        settingsIcon.setAttribute("aria-expanded", "false");
+
+        const settingsMenu = document.createElement("div");
+        settingsMenu.className = "settings-menu";
+        settingsMenu.innerHTML = `
+            <h3>Settings</h3>
+            <div class="settings-section">
+                <span class="settings-label">Language</span>
+                <div class="language-options">
+                    <button type="button" class="language-btn active" data-language="English">English</button>
+                    <button type="button" class="language-btn" data-language="Maltese">Maltese</button>
+                </div>
+            </div>
+            <div class="settings-section">
+                <span class="settings-label">Location</span>
+                <button type="button" class="location-btn">Show location</button>
+                <p class="location-text">Triq Emanuele Pinto, San Pawl il Bahar</p>
+            </div>
+        `;
+        navLeft.appendChild(settingsMenu);
+
+        function toggleSettingsMenu() {
+            const isOpen = settingsMenu.classList.toggle("open");
+            settingsIcon.setAttribute("aria-expanded", String(isOpen));
+        }
+
+        settingsIcon.addEventListener("click", toggleSettingsMenu);
+        settingsIcon.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                toggleSettingsMenu();
+            }
+        });
+
+        settingsMenu.querySelectorAll(".language-btn").forEach((button) => {
+            button.addEventListener("click", function () {
+                settingsMenu.querySelectorAll(".language-btn").forEach((languageButton) => {
+                    languageButton.classList.remove("active");
+                });
+                button.classList.add("active");
+            });
+        });
+
+        const locationButton = settingsMenu.querySelector(".location-btn");
+        const locationText = settingsMenu.querySelector(".location-text");
+        locationButton.addEventListener("click", function () {
+            locationText.classList.toggle("show");
+        });
+
+        document.addEventListener("click", function (e) {
+            if (!navLeft.contains(e.target)) {
+                settingsMenu.classList.remove("open");
+                settingsIcon.setAttribute("aria-expanded", "false");
+            }
+        });
+    }
+
     function isLoggedIn() {
         try {
             return localStorage.getItem("findMyPawLoggedIn") === "true";
@@ -36,41 +100,59 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const track = document.querySelector(".carousel-track");
     const cards = document.querySelectorAll(".post-card");
+    const trackContainer = document.querySelector(".carousel-track-container");
     const nextBtn = document.querySelector(".carousel-btn.next-btn");
     const prevBtn = document.querySelector(".carousel-btn.prev-btn");
     const dots = document.querySelectorAll(".dot");
 
-    if (track && cards.length > 0 && nextBtn && prevBtn) {
+    if (track && trackContainer && cards.length > 0 && nextBtn && prevBtn) {
         let currentIndex = 0;
 
-        function moveCarousel() {
+        function getCarouselMeasurements() {
             const gap = 30;
             const cardWidth = cards[0].offsetWidth + gap;
-            track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            const maxTranslate = Math.max(0, track.scrollWidth - trackContainer.offsetWidth);
+            const maxIndex = Math.ceil(maxTranslate / cardWidth);
+
+            return { cardWidth, maxTranslate, maxIndex };
+        }
+
+        function moveCarousel() {
+            const { cardWidth, maxTranslate, maxIndex } = getCarouselMeasurements();
+            currentIndex = Math.min(currentIndex, maxIndex);
+
+            const translateAmount = Math.min(currentIndex * cardWidth, maxTranslate);
+            track.style.transform = `translateX(-${translateAmount}px)`;
 
             dots.forEach((dot, index) => {
-                dot.classList.toggle("active", index === currentIndex);
+                const dotIsNeeded = index <= maxIndex;
+                dot.style.display = dotIsNeeded ? "" : "none";
+                dot.classList.toggle("active", dotIsNeeded && index === currentIndex);
             });
         }
 
         nextBtn.addEventListener("click", () => {
-            currentIndex = currentIndex < cards.length - 1 ? currentIndex + 1 : 0;
+            const { maxIndex } = getCarouselMeasurements();
+            currentIndex = currentIndex < maxIndex ? currentIndex + 1 : 0;
             moveCarousel();
         });
 
         prevBtn.addEventListener("click", () => {
-            currentIndex = currentIndex > 0 ? currentIndex - 1 : cards.length - 1;
+            const { maxIndex } = getCarouselMeasurements();
+            currentIndex = currentIndex > 0 ? currentIndex - 1 : maxIndex;
             moveCarousel();
         });
 
         dots.forEach((dot, index) => {
             dot.addEventListener("click", () => {
-                currentIndex = index;
+                const { maxIndex } = getCarouselMeasurements();
+                currentIndex = index <= maxIndex ? index : 0;
                 moveCarousel();
             });
         });
 
         window.addEventListener("resize", moveCarousel);
+        moveCarousel();
     }
 
     const closePageBtn = document.getElementById("closePage");
