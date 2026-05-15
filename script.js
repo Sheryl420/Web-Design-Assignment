@@ -170,9 +170,48 @@ document.addEventListener("DOMContentLoaded", () => {
         contactForm.addEventListener("submit", function (e) {
             e.preventDefault();
 
+            if (!contactForm.checkValidity()) {
+                contactForm.reportValidity();
+                return;
+            }
+
             popup.classList.add("active");
             overlay.classList.add("active");
             contactForm.reset();
+        });
+    }
+
+    const missingPetForm = document.getElementById("missingPetForm");
+    const petPhotoInput = document.getElementById("petPhoto");
+    const photoPreview = document.getElementById("photoPreview");
+
+    if (petPhotoInput && photoPreview) {
+        petPhotoInput.addEventListener("change", function () {
+            const file = petPhotoInput.files[0];
+            if (!file) {
+                return;
+            }
+
+            if (!file.type.startsWith("image/")) {
+                petPhotoInput.value = "";
+                return;
+            }
+
+            photoPreview.src = URL.createObjectURL(file);
+            photoPreview.alt = "Uploaded photo of missing pet";
+        });
+    }
+
+    if (missingPetForm) {
+        missingPetForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            if (!missingPetForm.checkValidity()) {
+                missingPetForm.reportValidity();
+                return;
+            }
+
+            window.location.href = "notification.centre.html";
         });
     }
 });
@@ -186,3 +225,66 @@ function closePopup() {
         overlay.classList.remove("active");
     }
 }
+document.addEventListener("DOMContentLoaded", function () {
+    const volunteerForm = document.getElementById("volunteerForm");
+    const popup = document.getElementById("popup");
+    const overlay = document.getElementById("overlay");
+    const requirementsBox = document.getElementById("requirementsBox");
+
+    if (!volunteerForm || !popup || !overlay) {
+        return;
+    }
+
+    const requirementCheckboxes = requirementsBox.querySelectorAll(".form-check-input");
+
+    function allRequirementsChecked() {
+        for (let i = 0; i < requirementCheckboxes.length; i++) {
+            if (!requirementCheckboxes[i].checked) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function showRequirementsError(showError) {
+        if (showError) {
+            requirementsBox.classList.add("requirements-error");
+        } else {
+            requirementsBox.classList.remove("requirements-error");
+        }
+    }
+
+    for (let i = 0; i < requirementCheckboxes.length; i++) {
+        requirementCheckboxes[i].addEventListener("change", function () {
+            if (allRequirementsChecked()) {
+                showRequirementsError(false);
+            }
+        });
+    }
+
+    volunteerForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        if (!allRequirementsChecked()) {
+            showRequirementsError(true);
+            requirementsBox.scrollIntoView({ behavior: "smooth", block: "center" });
+            return;
+        }
+
+        showRequirementsError(false);
+
+        if (!volunteerForm.checkValidity()) {
+            volunteerForm.reportValidity();
+            return;
+        }
+
+        popup.classList.add("active");
+        overlay.classList.add("active");
+        volunteerForm.reset();
+        showRequirementsError(false);
+    });
+
+    overlay.addEventListener("click", function () {
+        closePopup();
+    });
+});

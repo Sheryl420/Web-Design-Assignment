@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Missing</title>
+    <title>Missing Pet</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
@@ -13,21 +13,112 @@
             <img src="Settings icon.png" alt="Settings" class="icon">
             <img src="logo findmypaw.png" alt="FindMyPaw Logo" class="logo">
         </div>
-        
+
         <nav class="nav-links">
             <a href="Homepage.html">Home</a>
             <a href="Aboutus.html">About Us</a>
             <a href="Adopt.html">Adopt Me</a>
             <a href="Apply-Here.html">Apply Here</a>
-            <a href="Missing.html">Missing Pet</a>
+            <a href="Missing.html" class="active">Missing Pet</a>
             <a href="notification.centre.html">Notification Centre</a>
             <a href="contactus.html">Contact Us</a>
         </nav>
     </header>
-</head>
-</head>
-<body>
+
+    <main class="missing-page">
+        <section class="missing-panel">
+            <div class="missing-title-row">
+                <h1>Missing Pet</h1>
+                <div class="missing-title-paws" aria-hidden="true">
+                    <i class="fa-solid fa-paw"></i>
+                    <i class="fa-solid fa-paw"></i>
+                </div>
+            </div>
+
+            <form id="missingPetForm" class="missing-form-layout">
+                <div class="missing-fields">
+                    <div class="missing-field">
+                        <label for="petName">Pet Name <span class="required-mark">*</span></label>
+                        <input type="text" id="petName" name="petName" required>
+                    </div>
+
+                    <div class="missing-field">
+                        <label for="animalType">Type of Animal <span class="required-mark">*</span></label>
+                        <input type="text" id="animalType" name="animalType" required>
+                    </div>
+
+                    <div class="missing-field">
+                        <label for="breed">Breed</label>
+                        <input type="text" id="breed" name="breed">
+                    </div>
+
+                    <div class="missing-field">
+                        <label for="chipNumber">Chip Number</label>
+                        <input type="text" id="chipNumber" name="chipNumber">
+                    </div>
+
+                    <div class="missing-field">
+                        <label for="lastSeen">Last seen location <span class="required-mark">*</span></label>
+                        <input type="text" id="lastSeen" name="lastSeen" required>
+                    </div>
+
+                    <div class="missing-field">
+                        <label for="contactNumber">Contact Number <span class="required-mark">*</span></label>
+                        <input type="tel" id="contactNumber" name="contactNumber" required>
+                    </div>
+                </div>
+
+                <div class="missing-photo-side">
+                    <label class="photo-label" for="petPhoto">Insert Photo <span class="required-mark">*</span></label>
+
+                    <div class="photo-upload-box">
+                        <img id="photoPreview" src="puppy yellow bg.avif" alt="Preview of your pet photo">
+                        <input type="file" id="petPhoto" name="petPhoto" accept="image/*" required>
+                        <label for="petPhoto" class="photo-change-btn">
+                            <i class="fa-solid fa-camera" aria-hidden="true"></i>
+                            Upload photo
+                        </label>
+                    </div>
+
+                    <button type="submit" class="missing-send-btn">Send</button>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+<footer class="footer">
+    
+    <div class="footer-left">
+        
+        <h2>Bringing pets and people together, one paw at a time!</h2>
+        
+        <p>
+            <i class="fa-brands fa-instagram"></i>
+            @findmypaw_official
+        </p>
+        
+        <p>
+            <i class="fa-brands fa-facebook"></i>
+            @FindMyPaw_Official
+        </p>
+        
+        <p>
+            <i class="fa-solid fa-envelope"></i>
+            <a href="mailto:sherylamanda13@gmail.com">
+                findmypaw@gmail.com
+            </a>
+        </p>
+        <!-- Copy Right -->
+        <p class="copyright">
+            © 2026 FindMyPaw - Helping every paw find its way home.
+        </p>
+        
+    </div>
+    
+    <div class="footer-right">
+        <img src="logo findmypaw.png" alt="FindMyPaw Logo">
+    </div>
     
     <script src="script.js"></script>
-</body>
+</footer>
 </html>

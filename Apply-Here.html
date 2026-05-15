@@ -3,108 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apply-Here</title>
+    <title>Apply Here — Volunteer</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-<body>
+<body class="apply-page">
     <header class="navbar">
         <div class="nav-left">
             <img src="Settings icon.png" alt="Settings" class="icon">
             <img src="logo findmypaw.png" alt="FindMyPaw Logo" class="logo">
         </div>
-        
+
         <nav class="nav-links">
             <a href="Homepage.html">Home</a>
             <a href="Aboutus.html">About Us</a>
             <a href="Adopt.html">Adopt Me</a>
-            <a href="Apply-Here.html">Apply Here</a>
+            <a href="Apply-Here.html" class="active">Apply Here</a>
             <a href="Missing.html">Missing Pet</a>
             <a href="notification.centre.html">Notification Centre</a>
             <a href="contactus.html">Contact Us</a>
         </nav>
     </header>
-</head>
-</head>
-<body>
-    <!-- Volunteer Section -->
-<section class="volunteer-section">
 
-    <!-- Left Images -->
-    <div class="side-images left-images">
-        <img src="puppy yellow bg.avif" alt="Dog">
-        <img src="polka dot dog purple bg.jpg" alt="Dog">
-        <img src="puppy orange bg.avif" alt="Cats">
-        <img src="cat cilest bg.avif" alt="Dog">
+    <div class="apply-paw-pattern" aria-hidden="true">
+        <i class="fa-solid fa-paw apply-bg-paw apply-bg-paw-1"></i>
+        <i class="fa-solid fa-paw apply-bg-paw apply-bg-paw-2"></i>
+        <i class="fa-solid fa-paw apply-bg-paw apply-bg-paw-3"></i>
+        <i class="fa-solid fa-paw apply-bg-paw apply-bg-paw-4"></i>
+        <i class="fa-solid fa-paw apply-bg-paw apply-bg-paw-5"></i>
+        <i class="fa-solid fa-paw apply-bg-paw apply-bg-paw-6"></i>
+        <i class="fa-solid fa-paw apply-bg-paw apply-bg-paw-7"></i>
+        <i class="fa-solid fa-paw apply-bg-paw apply-bg-paw-8"></i>
     </div>
 
-    <!-- Volunteer Form -->
-    <div class="volunteer-form-container">
+    <main class="apply-main container-fluid px-3 px-lg-4">
+        <section class="volunteer-section">
+            <div class="apply-intro mx-auto">
+                <p class="apply-intro-tag">Join our team</p>
+                <h2 class="apply-intro-title">Make a difference for pets in need</h2>
+                <p class="apply-intro-text mb-0">
+                    Share your time, care, and compassion. Complete the form below and
+                    help us create safer, happier lives for animals across Malta.
+                </p>
+            </div>
 
-        <h1>Volunteer Form</h1>
-        <p class="subtitle">Volunteer & Event Application Requirements</p>
+            <div class="row g-4 align-items-center justify-content-center volunteer-layout">
+                <div class="col-lg-3 col-md-6 order-lg-1 order-2">
+                    <div class="side-images left-images d-flex flex-column align-items-center gap-3">
+                        <img src="puppy yellow bg.avif" class="img-fluid" alt="Happy puppy">
+                        <img src="polka dot dog purple bg.jpg" class="img-fluid" alt="Dog with polka dot background">
+                        <img src="puppy orange bg.avif" class="img-fluid" alt="Orange background puppy">
+                        <img src="cat cilest bg.avif" class="img-fluid" alt="Cat portrait">
+                    </div>
+                </div>
 
-        <!-- Requirements -->
-        <div class="requirements">
+                <div class="col-lg-6 col-12 order-lg-2 order-1">
+                    <div class="volunteer-form-container mx-auto">
+                        <h1 class="text-center">Volunteer Form</h1>
+                        <p class="subtitle text-center">Volunteer &amp; Event Application Requirements</p>
 
-            <label>
-                <input type="checkbox">
-                Must be at least 16 years old (or have parental consent)
-            </label>
+                        <form class="volunteer-form" id="volunteerForm" action="#" method="post">
+                        <div class="requirements" id="requirementsBox">
+                            <p class="requirements-note">Please confirm all requirements before submitting.</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="req-age" name="req-age" required>
+                                <label class="form-check-label" for="req-age">
+                                    Must be at least 16 years old (or have parental consent)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="req-interest" name="req-interest" required>
+                                <label class="form-check-label" for="req-interest">
+                                    Have a genuine interest in animal care and welfare
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="req-availability" name="req-availability" required>
+                                <label class="form-check-label" for="req-availability">
+                                    Be available for scheduled shifts or event days
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="req-team" name="req-team" required>
+                                <label class="form-check-label" for="req-team">
+                                    Able to work well in a team and follow instructions
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="req-responsibilities" name="req-responsibilities" required>
+                                <label class="form-check-label" for="req-responsibilities">
+                                    Willing to handle responsibilities such as feeding, cleaning, or assisting visitors
+                                </label>
+                            </div>
+                            <div class="form-check mb-0">
+                                <input class="form-check-input" type="checkbox" id="req-attitude" name="req-attitude" required>
+                                <label class="form-check-label" for="req-attitude">
+                                    Maintain a positive attitude and respectful behaviour at all times
+                                </label>
+                            </div>
+                        </div>
 
-            <label>
-                <input type="checkbox">
-                Have a genuine interest in animal care and welfare
-            </label>
+                            <div class="mb-3">
+                                <label class="form-label" for="volunteer-name">Name &amp; Surname</label>
+                                <input type="text" class="form-control" id="volunteer-name" name="name" required>
+                            </div>
 
-            <label>
-                <input type="checkbox">
-                Be available for scheduled shifts or event days
-            </label>
+                            <div class="mb-3">
+                                <label class="form-label" for="volunteer-phone">Mobile Number</label>
+                                <input type="tel" class="form-control" id="volunteer-phone" name="phone" required>
+                            </div>
 
-            <label>
-                <input type="checkbox">
-                Able to work well in a team and follow instructions
-            </label>
+                            <div class="mb-3">
+                                <label class="form-label" for="volunteer-email">Email Address</label>
+                                <input type="email" class="form-control" id="volunteer-email" name="email" required>
+                            </div>
 
-            <label>
-                <input type="checkbox">
-                Willing to handle responsibilities such as feeding, cleaning, or assisting visitors
-            </label>
+                            <div class="mb-4">
+                                <label class="form-label" for="volunteer-message">Message</label>
+                                <textarea class="form-control" id="volunteer-message" name="message" rows="5" required></textarea>
+                            </div>
 
-            <label>
-                <input type="checkbox">
-                Maintain a positive attitude and respectful behaviour at all times
-            </label>
+                            <button type="submit" class="btn btn-submit-volunteer d-block mx-auto">
+                                <i class="bi bi-send-fill me-2" aria-hidden="true"></i>Submit Application
+                            </button>
+                        </form>
+                    </div>
+                </div>
 
-        </div>
-        <!-- Form -->
-        <form class="volunteer-form">
+                <div class="col-lg-3 col-md-6 order-lg-3 order-3">
+                    <div class="side-images right-images d-flex flex-column align-items-center gap-3">
+                        <img src="bananadog.avif" class="img-fluid" alt="Playful dog">
+                        <img src="Dog with green bg.jpg" class="img-fluid" alt="Dog with green background">
+                        <img src="dog&cat yellow bg.jpg" class="img-fluid" alt="Dog and cat together">
+                        <img src="Bigdogyellow.jpg" class="img-fluid" alt="Large dog portrait">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-            <label> Name & Surname </label>
-            <input type="text" required>
-
-            <label> Mobile Number </label>
-            <input type="tel" required>
-
-            <label> Email Address </label>
-            <input type="email" required>
-
-            <label> Message </label>
-            <textarea rows="5"></textarea>
-
-            <button type="submit">Submit</button>
-        </form>
-
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <i class="fa-solid fa-circle-check"></i>
+        <h3>Application Submitted!</h3>
+        <p>
+            Thank you for applying to volunteer with FindMyPaw.
+            We will review your application and get back to you soon.
+        </p>
+        <button type="button" onclick="closePopup()">Close</button>
     </div>
-    <!-- Right Images -->
-    <div class="side-images right-images">
-        <img src="bananadog.avif" alt="Dog">
-        <img src="Dog with green bg.jpg" alt="Dog">
-        <img src="dog&cat yellow bg.jpg" alt="Pets">
-        <img src="Bigdogyellow.jpg" alt="Cat">
-    </div>
-</section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
+
+    <!-- Volunteer form JavaScript (same style as contact page) -->
+    <script>
+        
+    </script>
 </body>
+<footer class="footer">
+    
+    <div class="footer-left">
+        
+        <h2>Bringing pets and people together, one paw at a time!</h2>
+        
+        <p>
+            <i class="fa-brands fa-instagram"></i>
+            @findmypaw_official
+        </p>
+        
+        <p>
+            <i class="fa-brands fa-facebook"></i>
+            @FindMyPaw_Official
+        </p>
+        
+        <p>
+            <i class="fa-solid fa-envelope"></i>
+            <a href="mailto:sherylamanda13@gmail.com">
+                findmypaw@gmail.com
+            </a>
+        </p>
+        <!-- Copy Right -->
+        <p class="copyright">
+            © 2026 FindMyPaw - Helping every paw find its way home.
+        </p>
+        
+    </div>
+    
+    <div class="footer-right">
+        <img src="logo findmypaw.png" alt="FindMyPaw Logo">
+    </div>
+    
+    <script src="script.js"></script>
+</footer>
 </html>
